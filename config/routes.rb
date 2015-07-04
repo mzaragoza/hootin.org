@@ -19,5 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :twilio do
+        match "/inbound_call" => "twilio#inbound_call", :as => :inbound_call, via: :all
+      end
+    end
+  end
   root 'pages#index'
 end
