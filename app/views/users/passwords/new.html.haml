@@ -1,23 +1,17 @@
 #login-overlay.modal-dialog
   .modal-content
     .modal-header
-      %h4#myModalLabel.modal-title Login
+      %h4#myModalLabel.modal-title Reset Password
     .modal-body
       .row
         .col-xs-6
           .well
-            = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "loginForm"}) do |f|
+            = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { class: "loginForm"}) do |f|
               .form-group
                 %label.control-label{:for => "email"} Email
                 = f.input :email, label: false, input_html: { class: 'form-control', placeholder: "Email" }
                 %span.help-block
-              .form-group
-                %label.control-label{:for => "password"} Password
-                = f.input :password, label: false, input_html: { class: 'form-control', placeholder: "password" }
-                %span.help-block
-              #loginErrorMsg.alert.alert-error.hide Wrong username og password
-              %button.btn.btn-success.btn-block{:type => "submit"} Login
-              = link_to 'Help to login', new_user_password_path, class: 'btn btn-default btn-block'
+              %button.btn.btn-success.btn-block{:type => "submit"} Reset Password
         .col-xs-6
           %p.lead
             Register now for
@@ -38,4 +32,5 @@
               %small (only new customers)
           %p
             = link_to 'Register Now!', new_user_registration_path, class: 'btn btn-info btn-block'
+
 
