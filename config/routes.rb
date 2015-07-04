@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   authenticate :user do
     namespace :users do
+      get '/' => 'dashboards#index'
+      get '/dashboard' => 'dashboards#index', as: :dashboard
+      root :to => 'dashboards#index'
     end
   end
 

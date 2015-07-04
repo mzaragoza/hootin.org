@@ -1,0 +1,65 @@
+-#!!!
+-#%html
+  %body
+    %p
+    %title HootinBiz
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = yield
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title
+      - unless yield(:title).to_s.empty?
+        = yield (:title)
+        |
+      Hootin
+      |
+      (Helping Others Out There In Need)
+    %link{:href => "/assets/home/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "/assets/home/css/business-frontpage.css", :rel => "stylesheet"}/
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#"} Hootin
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{:href => "#"} About
+            %li
+              %a{:href => "#"} Services
+            %li
+              = link_to 'Become a Helper', new_user_registration_path
+            %li
+              = link_to t(:logout), destroy_user_session_path, :class => 'glyphicons power', :method => :delete
+    .container
+      .row
+        .col-lg-12.pull-right
+          = current_user.name 
+    = yield
+    %header
+      .container
+        .row
+          .col-lg-12
+            %p Copyright © Hootin 2014 - #{DateTime.now.strftime('%Y')}
+    %script{:src => "/assets/home/js/jquery.js"}
+    %script{:src => "/assets/home/js/bootstrap.min.js"}
+
