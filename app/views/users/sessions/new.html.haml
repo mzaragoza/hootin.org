@@ -7,6 +7,9 @@
         .col-xs-6
           .well
             = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "loginForm"}) do |f|
+              %ul
+                - resource.errors.full_messages.each do |e|
+                  %li=e
               .form-group
                 %label.control-label{:for => "email"} Email
                 = f.input :email, label: false, input_html: { class: 'form-control', placeholder: "Email" }

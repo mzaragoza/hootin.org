@@ -1,0 +1,17 @@
+.container
+  %hr/
+  .row
+    .col-sm-2
+    .col-sm-6.center
+      - if current_user.available
+        %h2.center I am available to give help
+        = link_to 'Become unavailable', users_update_available_status_path(current_user), class: 'btn btn-danger'
+        %p Click the button to change status
+      - else
+        %h2.center I am unavailable to give help
+        = link_to 'Become available', users_update_available_status_path(current_user), class: 'btn btn-success'
+        %p Click the button to change status
+
+    .col-sm-4
+  %hr/
+
