@@ -3,6 +3,10 @@ class Api::V1::TwilioController < ApiController
 
   def inbound_call
     user = User.where(available: true).shuffle.first
+    call = Call.new
+    call.from = params[:From]
+    call.to = user.id
+    call.save
     if user
       response = Twilio::TwiML::Response.new do |r|
 
@@ -10,7 +14,7 @@ class Api::V1::TwilioController < ApiController
           d.Number user.phone
         end
       end
-      #user.available = false
+      user.available = false
       user.save
       render_twiml response
     else
