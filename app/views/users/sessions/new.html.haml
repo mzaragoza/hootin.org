@@ -1,0 +1,59 @@
+-#= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: ""}) do |f|
+  .container-fluid
+    %section.container
+      .container-page
+        .col-md-6-pull3
+          %h3.dark-grey Login
+          .form-group.col-lg-12
+            %label Email
+            = f.input :email, label: false, input_html: { class: 'form-control', placeholder: "Email" }
+          .form-group.col-lg-12
+            %label Password
+            = f.input :password, label: false, input_html: { class: 'form-control', placeholder: "password" }
+          .form-group.col-lg-12
+            = f.button :submit, "Login", :class => 'btn btn-primary '
+            = link_to 'Allready a Member', new_user_session_path, :class => 'btn btn-link '
+
+
+
+#login-overlay.modal-dialog
+  .modal-content
+    .modal-header
+      %h4#myModalLabel.modal-title Login
+    .modal-body
+      .row
+        .col-xs-6
+          .well
+            = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "loginForm"}) do |f|
+              .form-group
+                %label.control-label{:for => "email"} Email
+                = f.input :email, label: false, input_html: { class: 'form-control', placeholder: "Email" }
+                %span.help-block
+              .form-group
+                %label.control-label{:for => "password"} Password
+                = f.input :password, label: false, input_html: { class: 'form-control', placeholder: "password" }
+                %span.help-block
+              #loginErrorMsg.alert.alert-error.hide Wrong username og password
+              %button.btn.btn-success.btn-block{:type => "submit"} Login
+              = link_to 'Help to login', new_user_password_path, class: 'btn btn-default btn-block'
+        .col-xs-6
+          %p.lead
+            Register now for
+            %span.text-success FREE
+          %ul.list-unstyled{:style => "line-height: 2"}
+            %li
+              %span.fa.fa-check.text-success
+              See all your orders
+            %li
+              %span.fa.fa-check.text-success
+              Save your favorites
+            %li
+              %span.fa.fa-check.text-success
+              Fast checkout
+            %li
+              %span.fa.fa-check.text-success
+              Get a gift
+              %small (only new customers)
+          %p
+            = link_to 'Register Now!', new_user_registration_path, class: 'btn btn-info btn-block'
+
