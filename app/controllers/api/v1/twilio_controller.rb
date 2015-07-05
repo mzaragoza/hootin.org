@@ -16,6 +16,7 @@ class Api::V1::TwilioController < ApiController
       call.from = params[:From] || ' '
       call.to = user.id
       call.answered =  ' '
+      call.params = params
       call.save
       render_twiml response
     else
@@ -30,6 +31,7 @@ class Api::V1::TwilioController < ApiController
       call.from = params[:From] || ' '
       call.to = ' '
       call.answered =  ' '
+      call.params = params
       call.save
       render_twiml response
     end
