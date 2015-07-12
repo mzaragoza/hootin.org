@@ -5,7 +5,7 @@ class Api::V1::TwilioController < ApiController
     user = User.where(available: true).shuffle.first
     if user
       response = Twilio::TwiML::Response.new do |r|
-        r.Dial callerId: '' do |d|
+        r.Dial callerId: '6467984357' do |d|
           d.Number user.phone
         end
 
