@@ -1,4 +1,4 @@
-# hootin.biz
+# hootin.org
 
 https://hootin-biz-dev.herokuapp.com
 
