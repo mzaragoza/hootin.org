@@ -23,14 +23,9 @@
             %label Repeat Password
             = f.input :password_confirmation, label: false, input_html: { class: 'form-control', placeholder: "Repeat Password" }
         .col-md-6
-          %h3.dark-grey Terms and Conditions
-          %p
+          -#%h3.dark-grey Terms and Conditions
+          -#%p
             By clicking on "Register" you agree to hootin's' Terms and Conditions
           %p
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec rhoncus libero. Aenean urna justo, molestie ac condimentum sed, lobortis a enim. Suspendisse ultricies risus ac ex consectetur, vitae ornare nisi aliquet. 
-          %p
-            Vivamus diam justo, dignissim a rutrum id, venenatis iaculis arcu. 
-          %p
-            Aenean urna justo, molestie ac condimentum sed, lobortis a enim. Suspendisse ultricies risus ac ex consectetur.
           = f.button :submit, "Register", :class => 'btn btn-primary '
           = link_to 'Allready a Member', new_user_session_path, :class => 'btn btn-link '
