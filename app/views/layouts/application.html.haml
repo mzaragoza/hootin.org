@@ -43,11 +43,16 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
+              %a{:href => "/"} Home
+            -#%li
               %a{:href => "#"} About
-            %li
+            -#%li
               %a{:href => "#"} Services
-            %li
-              = link_to 'Become a Helper', new_user_registration_path
+            - if current_user
+              = link_to t(:logout), destroy_user_session_path, :class => 'glyphicons power', :method => :delete
+            -else
+              %li
+                = link_to 'Become a Helper', new_user_registration_path
     = yield
     %header
       .container
